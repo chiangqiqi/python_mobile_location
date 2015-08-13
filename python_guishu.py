@@ -41,7 +41,6 @@ class PhoneNumberLocation:
     def load_data(self,file_name):
         with open(file_name) as f:
             data = f.read().split('----------\n')
-            print(len(data))
             
         for block in data:
             lines = block.split('\n')
@@ -61,11 +60,10 @@ class PhoneNumberLocation:
 
         if i in self._number_dict and j in self._number_dict[i]:
             info_str = self._number_dict[i][j]
-            print(info_str) 
             area_str = self._area_dict[info_str[0]]
             type_str = self._type_dict[info_str[1]]
 
-            print(" ".join([area_str, type_str])) 
+            print(" ".join([area_str])) 
         #if self._number_dict[i] 
 
         
