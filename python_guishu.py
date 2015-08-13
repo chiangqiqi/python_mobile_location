@@ -4,13 +4,15 @@
 # E-mail : woshiqiqiye@gmail.com
 # 
 ########################################
+import os
 
 class PhoneNumberLocation:
-    def __init__(self, filename):
+    def __init__(self, filename = 'mobilephones.txt'):
         "load date to deal with query"
         self._type_dict = {}
         self._area_dict = {}
         self._number_dict = {}
+        filename = os.path.join(os.path.dirname(__file__), filename)
         self.load_data(filename)
 
     def _load_type(self, lines):
@@ -28,8 +30,6 @@ class PhoneNumberLocation:
     def _load_number(self, number, lines):
         if number not in self._number_dict:
             self._number_dict[number] = {}
-
-        print(number)
 
         i = 0
         for line in lines:
