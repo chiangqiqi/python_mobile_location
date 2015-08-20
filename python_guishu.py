@@ -34,9 +34,9 @@ class PhoneNumberLocation:
         i = 0
         for line in lines:
             words = line.strip().split(',')
-            if len(words) == 2:
-                self._number_dict[number][i] = words
-                i += 1
+            i += 1
+            self._number_dict[number][i] = words
+                
     
     def load_data(self,file_name):
         with open(file_name) as f:
@@ -49,18 +49,19 @@ class PhoneNumberLocation:
             elif lines[0] == 'area':
                 self._load_area(lines[1:])
             elif lines[0].startswith("number-"):
-                self._load_number(lines[0][7:], lines[1:])
+                self._load_number(int(lines[0][7:]), lines[1:])
             else:
                 print("error occured")
 
     def query(self, phone_number):
         num_str = str(phone_number)
-        i = num_str[0:3]
+        i = int(num_str[0:3])
         j = int(num_str[3:7])
 
         if i in self._number_dict and j in self._number_dict[i]:
             info_str = self._number_dict[i][j]
             area_str = self._area_dict[info_str[0]]
+            
             type_str = self._type_dict[info_str[1]]
 
             return " ".join([area_str])
@@ -70,7 +71,7 @@ class PhoneNumberLocation:
         
 def main():
     db = PhoneNumberLocation('mobilephones.txt')
-    db.query("13913482016")
+    print(db.query(18463320626)) 
 
 if __name__ == '__main__':
     main()
