@@ -63,7 +63,7 @@ class PhoneNumberLocation:
             area_str = self._area_dict[info_str[0]]
             type_str = self._type_dict[info_str[1]]
 
-            print(" ".join([area_str])) 
+            return " ".join([area_str])
         #if self._number_dict[i] 
 
         
