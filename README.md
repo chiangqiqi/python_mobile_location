@@ -5,5 +5,7 @@
 ##使用方法##
 
 >> from python_mobile_location import PhoneLoc
+
 >> pl = PhoneLoc()
+
 >> pl.query(12813482019)
